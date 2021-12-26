@@ -12,16 +12,16 @@ it's just a script for me to get what I need in arch linux while learning how to
   # gets the user name
   myName=`whoami`
   # a little welcoming message
+  echo "#####################################"
   echo "Hello $myName, and welcome to italOS!"
+  echo "#####################################
   echo "This script will guide you through the installation of italOS!"
 #+end_src
 
-* Let's firstly install and enable some basic software
+* Let's install and enable some basic software first
 
 #+begin_src shell :tangle italOS.sh
-  doas pacman -S < pkglist.txt
-  doas systemctl enable NetworkManager.Service
+  doas pacman -S - < pkglist.txt
+  doas systemctl enable NetworkManager.service
   doas systemctl enable lightdm
 #+end_src
-
-
