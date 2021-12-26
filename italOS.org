@@ -1,0 +1,27 @@
+#+title: italOS
+#+author: Italo Guedes
+
+* About italOS
+
+it's just a script for me to get what I need in arch linux while learning how to orgmode, Arch and bash scripting!
+
+* Let's start with a friendly greeting ;)
+
+#+begin_src shell :tangle italOS.sh
+    #! /bin/sh
+  # gets the user name
+  myName=`whoami`
+  # a little welcoming message
+  echo "Hello $myName, and welcome to italOS!"
+  echo "This script will guide you through the installation of italOS!"
+#+end_src
+
+* Let's firstly install and enable some basic software
+
+#+begin_src shell :tangle italOS.sh
+  doas pacman -S < pkglist.txt
+  doas systemctl enable NetworkManager.Service
+  doas systemctl enable lightdm
+#+end_src
+
+
