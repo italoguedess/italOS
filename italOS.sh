@@ -15,13 +15,11 @@ systemctl enable NetworkManager.service
 systemctl enable lightdm
 
 # if there isn't a .config folder, creates it
-[ `fd -HIg .config $HOME` ] || \
+[ `fd -HIgt d .config $HOME` ] || \
     mkdir $HOME/.config
 
-# gets the path to the alacritty config file if there is already one
-path=`fd -HIg alacritty.yml $HOME`
 # if there isn't an alacritty config file already copies the one italOS to $HOME/.config/alacritty/
-if [ path ];then
+if [ `fd -HIg alacritty.yml $HOME` ];then
     echo "An alacritty config file was found, do you still want the italOS one? (it won't overwrite yours) [Y/n]"
     read path
     [ path = "n" ] || [ path = "N" ] || \
