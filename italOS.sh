@@ -2,10 +2,11 @@
 # gets the user name
 myName=`whoami`
 # a little welcoming message
-echo "#####################################"
-echo "Hello $myName, and welcome to italOS!"
-echo "#####################################"
+echo "##############################################################"
+echo "            Hello $myName, and welcome to italOS!"
+echo "##############################################################"
 echo "This script will guide you through the installation of italOS!"
+echo "##############################################################
 
 # install all packages from pkglis.txt
 doas pacman -S - < pkglist.txt
@@ -21,8 +22,9 @@ systemctl enable lightdm
 # if there isn't an alacritty config file already copies the one italOS to $HOME/.config/alacritty/
 if [ `fd -HIg alacritty.yml $HOME` ];then
     echo "An alacritty config file was found, do you still want the italOS one? (it won't overwrite yours) [Y/n]"
-    read path
-    [ path = "n" ] || [ path = "N" ] || \
+    read userInput
+    # if the user's input is other than n or N copies the config file without overwriting
+    [ $usertInput = "n" ] || [ $usertInput = "N" ] || \
         cp config-files/italOS-alacritty.yml $HOME/.config/alacritty/italOS-alacritty.yml
 else
     # if there isn't an $HOME/.config/alacritty folder, creates it

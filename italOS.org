@@ -12,10 +12,11 @@ it's just a script for me to get what I need in arch linux while learning how to
   # gets the user name
   myName=`whoami`
   # a little welcoming message
-  echo "#####################################"
-  echo "Hello $myName, and welcome to italOS!"
-  echo "#####################################"
+  echo "##############################################################"
+  echo "            Hello $myName, and welcome to italOS!"
+  echo "##############################################################"
   echo "This script will guide you through the installation of italOS!"
+  echo "##############################################################
 #+end_src
 
 * Let's install and enable some basic software first
@@ -31,9 +32,9 @@ in this part, the script just installs and enables some stuff to setup the envir
   systemctl enable lightdm
 #+end_src
 
-* Configurin alacritty
+* Configuring alacritty
 
-in this part, the alacritty config file is copied from italOS/config-files to .config/alacritty/, without rewriting
+Here, the alacritty config file is copied from italOS/config-files to .config/alacritty/, without rewriting
 your own config if you already have one.
 
 #+begin_src shell :tangle italOS.sh
@@ -44,8 +45,9 @@ your own config if you already have one.
   # if there isn't an alacritty config file already copies the one italOS to $HOME/.config/alacritty/
   if [ `fd -HIg alacritty.yml $HOME` ];then
       echo "An alacritty config file was found, do you still want the italOS one? (it won't overwrite yours) [Y/n]"
-      read path
-      [ path = "n" ] || [ path = "N" ] || \
+      read userInput
+      # if the user's input is other than n or N copies the config file without overwriting
+      [ $usertInput = "n" ] || [ $usertInput = "N" ] || \
           cp config-files/italOS-alacritty.yml $HOME/.config/alacritty/italOS-alacritty.yml
   else
       # if there isn't an $HOME/.config/alacritty folder, creates it
