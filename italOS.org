@@ -48,13 +48,13 @@ your own config if you already have one.
       echo "An alacritty config file was found, do you still want the italOS one? (it won't overwrite yours) [Y/n]"
       read path
       [ path = "n" ] || [ path = "N" ] || \
-          cp config-files/alacritty.yml $HOME/.config/alacritty/italOS-alacritty.yml
+          cp config-files/italOS-alacritty.yml $HOME/.config/alacritty/italOS-alacritty.yml
   else
       # if there isn't an $HOME/.config/alacritty folder, creates it
       [ `fd -HIg .config/alacritty $HOME` ] || \
           mkdir $HOME/.config/alacritty
       # copy italOS alacritty config file to $HOME/.config/alacritty/
-      cp config-files/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+      cp config-files/italOS-alacritty.yml $HOME/.config/alacritty/alacritty.yml
   fi
 
 #+end_src
