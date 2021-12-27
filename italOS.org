@@ -20,8 +20,41 @@ it's just a script for me to get what I need in arch linux while learning how to
 
 * Let's install and enable some basic software first
 
+in this part, the script just installs and enables some stuff to setup the enviroment
+
 #+begin_src shell :tangle italOS.sh
+  # install all packages from pkglis.txt
   doas pacman -S - < pkglist.txt
-  doas systemctl enable NetworkManager.service
-  doas systemctl enable lightdm
+  # enables network manager from the startup
+  systemctl enable NetworkManager.service
+  # enable lightdm from the startup
+  systemctl enable lightdm
+#+end_src
+
+* Configurin alacritty
+
+in this part, the alacritty config file is copied from italOS/config-files to .config/alacritty/, without rewriting
+your own config if you already have one.
+
+#+begin_src shell :tangle italOS.sh
+  # if there isn't a .config folder, creates it
+  [ `fd -HIg .config $HOME` != "0" ] && \
+      mkdir $HOME/.config
+
+  # gets the path to the alacritty config file if there is already one
+  path=`fd -HI alacritty.yml $HOME`
+  # if there isn't an alacritty config file already copies the one italOS to $HOME/.config/alacritty/
+  if [ path != "0" ];then
+      # if there isn't an $HOME/.config/alacritty folder, creates it
+      [ `fd -HIg .config/alacritty $HOME` = "0" ] && \
+          mkdir $HOME/.config/alacritty
+      # copy italOS alacritty config file to $HOME/.config/alacritty/
+      cp config-files/alacritty.yml $HOME/.config/alacritty/alacritty.yml
+  else
+      echo "An alacritty config file was found, do you still want the italOS one? (it won't overwrite yours) [Y/n]"
+      read path
+      [ path -eq "n" || path -eq "n" ] || \
+          cp config-files/alacritty.yml $HOME/.config/alacritty/italOS-alacritty.yml
+  fi
+
 #+end_src
