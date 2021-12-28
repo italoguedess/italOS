@@ -29,7 +29,7 @@ function setConfigFile () {
             cp config-files/italOS-${2}.$3 $HOME/.config/$1/italOS-${2}.$3
     else
         # if there isn't an $HOME/.config/$1 folder, creates it
-        [ `fd -HIg .config/$1 $HOME` ] || \
+        [ `fd -HIgt d $1 $HOME/.config/` ] || \
             mkdir $HOME/.config/$1
         # copy italOS config file to $HOME/.config/$1/
         cp config-files/italOS-${2}.$3 $HOME/.config/$1/${2}.$3
