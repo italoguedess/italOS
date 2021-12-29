@@ -45,7 +45,7 @@ setConfigFile awesome theme lua
 setConfigFile alacritty alacritty yml
 
 # if there isn't a $HOME/.themes folder creates it
-[ `fd -gt d .themes $HOME` ] || \
+[ `fd -HIgt d .themes $HOME` ] || \
     mkdir $home/.themes
 # downloading the dracula theme for alacritty and spacemacs
 git clone https://github.com/dracula/alacritty $HOME/.themes/dracula-alacritty
