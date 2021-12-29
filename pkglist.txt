@@ -1,4 +1,3 @@
-networkmanager
 git
 xorg
 lightdm
@@ -10,3 +9,5 @@ man-db
 alacritty
 emacs
 qutebrowser
+feh
+neofetch
