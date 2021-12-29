@@ -10,8 +10,6 @@ echo "##############################################################"
 
 # install all packages from pkglis.txt
 doas pacman -S - < pkglist.txt
-# enables network manager from the startup
-systemctl enable NetworkManager.service
 # enable lightdm from the startup
 systemctl enable lightdm
 
@@ -20,6 +18,7 @@ systemctl enable lightdm
 # the second parameter must be the name of the file
 # the third parameter must be the extension without the dot (e.g: py)
 function setConfigFile () {
+    echo "Copying $2.$3 to $HOME/.config/$1/"
     # if there isn't a config file already copies the one italOS to $HOME/.config/$1
     if [ `fd -HIg ${2}.$3 $HOME` ];then
         echo "An ${2}.$3 config file was found, do you still want the italOS one? (it won't overwrite yours) [Y/n]"
@@ -41,7 +40,13 @@ function setConfigFile () {
 [ `fd -HIgt d .config $HOME` ] || \
     mkdir $HOME/.config
 
-
 setConfigFile awesome rc lua
 setConfigFile awesome theme lua
 setConfigFile alacritty alacritty yml
+
+# if there isn't a $HOME/.themes folder creates it
+[ `fd -gt d .themes $HOME` ] || \
+    mkdir $home/.themes
+# downloading the dracula theme for alacritty and spacemacs
+git clone https://github.com/dracula/alacritty $HOME/.themes/dracula-alacritty
+git clone https://github.com/dracula/spacemacs.git $HOME/.themes/dracula-spacemacs
