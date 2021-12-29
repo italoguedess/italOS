@@ -44,6 +44,18 @@ setConfigFile awesome rc lua
 setConfigFile awesome theme lua
 setConfigFile alacritty alacritty yml
 
+# if there isn't a .emacs.d folder, creates it
+[ `fd -HIg1t d .emacs.d $HOME` ] || \
+    mkdir .emacs.d
+# Sees if the .emacs.d folder already has archives in it, if it has clones the spacemacs
+# config files to $HOME/.emacs.d/italOS-.emacs.d/, if it doesn't clones the spacemacs config to
+if [ `ls $HOME/.emacs.d` ]; then
+    echo "$HOME/.emacs.d already exists, creating $HOME/italOS-.emacs.d"
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d/italOS-.emacs.d 
+else
+    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+fi
+
 # if there isn't a $HOME/.themes folder creates it
 [ `fd -HIgt d .themes $HOME` ] || \
     mkdir $home/.themes
