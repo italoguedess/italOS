@@ -47,18 +47,35 @@ setConfigFile alacritty alacritty yml
 # if there isn't a .emacs.d folder, creates it
 [ `fd -HIg1t d .emacs.d $HOME` ] || \
     mkdir .emacs.d
-# Sees if the .emacs.d folder already has archives in it, if it has clones the spacemacs
-# config files to $HOME/.emacs.d/italOS-.emacs.d/, if it doesn't clones the spacemacs config to
-if [ `ls $HOME/.emacs.d` ]; then
-    echo "$HOME/.emacs.d already exists, creating $HOME/italOS-.emacs.d"
-    git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d/italOS-.emacs.d 
+# if $HOME/.emacs.d isn't empty
+if [ "`ls -A $HOME/.emacs.d`" ]; then
+    echo "$HOME/.emacs.d already exists, creating $HOME/italOS.emacs.d"
+    # download the spacemacs without overwriting the user's files
+    git clone https://github.com/syl20bnr/spacemacs ~/italOS.emacs.d 
+# if #HOME.emacs.d is empty
 else
+    #clones it into $HOME/.emacs.d
     git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 fi
 
 # if there isn't a $HOME/.themes folder creates it
 [ `fd -HIgt d .themes $HOME` ] || \
     mkdir $home/.themes
-# downloading the dracula theme for alacritty and spacemacs
+# downloading the dracula theme for alacritty, spacemacs and tty
 git clone https://github.com/dracula/alacritty $HOME/.themes/dracula-alacritty
 git clone https://github.com/dracula/spacemacs.git $HOME/.themes/dracula-spacemacs
+git clone https://github.com/dracula/tty.git $HOME/.themes/dracula-tty
+
+# if $HOME/.bashrc exists
+if [ `fd -HI .bashrc $HOME` ]; then
+    # creates a backup of .bashrc
+    cp $HOME/.bashrc $HOME/.bashrc-backup
+    # concatenate .bashrc and the theme fie and puts the result in .bashrc-dracula
+    cat $HOME/.bashrc $HOME/.themes/dracula-tty/dracula-tty.sh > .bashrc-dracula
+    # copies .bashrc-dracula into .bashrc
+    cp $HOME/.bashrc-dracula $HOME/.bashrc
+# if $HOME/.bashrc doesn't exist
+else
+    # copies dracula-tty.sh omtp .bashrc
+    cp $HOME/.themes/dracula-tty/dracula-tty.sh .bashrc
+fi
