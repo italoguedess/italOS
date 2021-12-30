@@ -1,9 +1,7 @@
-git
 xorg
 lightdm
 lightdm-gtk-greeter
 awesome
-nitrogen
 picom
 man-db
 alacritty
@@ -11,3 +9,5 @@ emacs
 qutebrowser
 feh
 neofetch
+ranger
+libreoffice-still
