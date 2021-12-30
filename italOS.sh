@@ -63,7 +63,6 @@ fi
     mkdir $home/.themes
 # downloading the dracula theme for alacritty, spacemacs and tty
 git clone https://github.com/dracula/alacritty $HOME/.themes/dracula-alacritty
-git clone https://github.com/dracula/spacemacs.git $HOME/.themes/dracula-spacemacs
 git clone https://github.com/dracula/tty.git $HOME/.themes/dracula-tty
 
 # if $HOME/.bashrc exists
@@ -76,6 +75,6 @@ if [ `fd -HI .bashrc $HOME` ]; then
     cp $HOME/.bashrc-dracula $HOME/.bashrc
 # if $HOME/.bashrc doesn't exist
 else
-    # copies dracula-tty.sh omtp .bashrc
+    # copies dracula-tty.sh to .bashrc
     cp $HOME/.themes/dracula-tty/dracula-tty.sh $HOME/.bashrc
 fi

@@ -104,7 +104,6 @@ Time to put some color in the terminal and tty, spacemacs is being a bit stubbor
   # downloading the dracula theme for alacritty, spacemacs and tty
   git clone https://github.com/dracula/alacritty $HOME/.themes/dracula-alacritty
   git clone https://github.com/dracula/tty.git $HOME/.themes/dracula-tty
-  git clone https://github.com/dracula/libreoffice.git $HOME/.themes/dracula-libreoffice
 
   # if $HOME/.bashrc exists
   if [ `fd -HI .bashrc $HOME` ]; then
@@ -119,4 +118,5 @@ Time to put some color in the terminal and tty, spacemacs is being a bit stubbor
       # copies dracula-tty.sh to .bashrc
       cp $HOME/.themes/dracula-tty/dracula-tty.sh $HOME/.bashrc
   fi
+  
 #+end_src
