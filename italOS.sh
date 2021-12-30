@@ -77,5 +77,5 @@ if [ `fd -HI .bashrc $HOME` ]; then
 # if $HOME/.bashrc doesn't exist
 else
     # copies dracula-tty.sh omtp .bashrc
-    cp $HOME/.themes/dracula-tty/dracula-tty.sh .bashrc
+    cp $HOME/.themes/dracula-tty/dracula-tty.sh $HOME/.bashrc
 fi

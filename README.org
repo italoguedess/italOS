@@ -117,6 +117,6 @@ Time to put some color in the terminal and tty, spacemacs is being a bit stubbor
   # if $HOME/.bashrc doesn't exist
   else
       # copies dracula-tty.sh omtp .bashrc
-      cp $HOME/.themes/dracula-tty/dracula-tty.sh .bashrc
+      cp $HOME/.themes/dracula-tty/dracula-tty.sh $HOME/.bashrc
   fi
 #+end_src
