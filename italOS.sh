@@ -71,7 +71,7 @@ if [ `fd -HI .bashrc $HOME` ]; then
     # creates a backup of .bashrc
     cp $HOME/.bashrc $HOME/.bashrc-backup
     # concatenate .bashrc and the theme fie and puts the result in .bashrc-dracula
-    cat $HOME/.bashrc $HOME/.themes/dracula-tty/dracula-tty.sh > .bashrc-dracula
+    cat $HOME/.bashrc $HOME/.themes/dracula-tty/dracula-tty.sh > $HOME/.bashrc-dracula
     # copies .bashrc-dracula into .bashrc
     cp $HOME/.bashrc-dracula $HOME/.bashrc
 # if $HOME/.bashrc doesn't exist
