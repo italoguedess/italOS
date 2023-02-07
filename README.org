@@ -3,7 +3,7 @@
 
 * In the beggining there was darkness
 :PROPERTIES:
-:header-args: :tangle ../src/italOS.py :mkdirp yes :shebang #!/usr/bin/env python
+:header-args: :tangle italOS :shebang #!/usr/bin/env python
 :END:
 literally when you install vanilla arch the hard way there usually is nothing
 but a black tty screen to welcome you, so let's get to work. Even more so.
@@ -33,5 +33,4 @@ but a black tty screen to welcome you, so let's get to work. Even more so.
 
 
     check_if_os_is_arch()
-    print("testing")
 #+end_src
