@@ -36,7 +36,6 @@ Here, all the config files are being copied from italOS/config-files to .config/
 your own config if you already have one.
 
 #+begin_src shell :tangle italOS.sh
-
     # creates a folder in .config if necessary and copies there without overwriting a config file from italOS
   # the first parameter must be the name of the folder created in .config
   # the second parameter must be the name of the file
@@ -83,7 +82,7 @@ In here I just download the spacemacs config paying attention to not overwrite a
   if [ "`ls -A $HOME/.emacs.d`" ]; then
       echo "$HOME/.emacs.d already exists, creating $HOME/italOS.emacs.d"
       # download the spacemacs without overwriting the user's files
-      git clone https://github.com/syl20bnr/spacemacs ~/italOS.emacs.d 
+      git clone https://github.com/syl20bnr/spacemacs ~/italOS.emacs.d
   # if #HOME.emacs.d is empty
   else
       #clones it into $HOME/.emacs.d
